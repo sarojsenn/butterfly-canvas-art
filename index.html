@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Butterfly Drawing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    canvas {
+      display: block;
+      margin: auto;
+      background-color: black;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-black">
+  <canvas id="butterfly" width="500" height="500"></canvas>
+
+  <script>
+    // Get canvas and context
+    const canvas = document.getElementById('butterfly');
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+
+    // Move origin to center and flip Y-axis for natural drawing
+    ctx.translate(w / 2, h / 2);
+    ctx.scale(50, -50);
+
+    let t = 0;
+    const maxT = 24 * Math.PI; // Enough for a full butterfly
+
+    // Draws the butterfly curve segment by segment
+    function draw() {
+      if (t >= maxT) return;
+
+      // Previous point (for smooth lines)
+      const prevT = t - 0.05;
+      const rPrev = Math.exp(Math.cos(prevT)) - 2 * Math.cos(4 * prevT) - Math.pow(Math.sin(prevT / 12), 5);
+      const xPrev = rPrev * Math.cos(prevT);
+      const yPrev = rPrev * Math.sin(prevT);
+
+      // Current point
+      const r = Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5);
+      const x = r * Math.cos(t);
+      const y = r * Math.sin(t);
+
+      // Draw a colorful segment
+      ctx.beginPath();
+      ctx.moveTo(xPrev, yPrev);
+      ctx.lineTo(x, y);
+      ctx.strokeStyle = `hsl(${(t * 40) % 360}, 100%, 70%)`; // Rainbow color
+      ctx.lineWidth = 0.05;
+      ctx.stroke();
+
+      t += 0.05;
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
