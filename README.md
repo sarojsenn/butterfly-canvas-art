@@ -51,13 +51,6 @@ Every push to the `main` branch updates the live site automatically.
 5. Your site will be live at:  
    `https://yourusername.github.io/butterfly-canvas-art/`
 
-## 📂 Project Structure
-
-butterfly-canvas-art/
-├── index.html   # Main HTML file with embedded JavaScript and styling
-├── README.md    # Project documentation (this file)
-└── .gitignore   # Files/folders to ignore in version control
-
 ## 🤝 Contributing
 
 Pull requests are welcome!  
