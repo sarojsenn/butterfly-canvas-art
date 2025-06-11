@@ -30,7 +30,8 @@ Animated butterfly drawing using HTML Canvas and JavaScript.
 
 This project uses the [butterfly curve](https://en.wikipedia.org/wiki/Butterfly_curve_(transcendental)) formula:
 
-r = e^{\cos t} - 2\cos(4t) - \sin^5\left(\frac{t}{12}\right)
+![image](https://github.com/user-attachments/assets/1bc39e26-ff88-484a-a517-d1d24d007cfb)
+
 
 - The script calculates points along this curve and draws small colored segments between each pair.
 - The animation is smooth and continuous, thanks to `requestAnimationFrame`.
